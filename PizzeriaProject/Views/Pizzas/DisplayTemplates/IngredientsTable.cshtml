@@ -1,0 +1,10 @@
+﻿@model IEnumerable<PizzeriaProject.Models.Ingredient>
+
+<table>
+    @foreach (var ingredient in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(x => ingredient.Name)</td>
+        </tr>
+    }    
+</table>

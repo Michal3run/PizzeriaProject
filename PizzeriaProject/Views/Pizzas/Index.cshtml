@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PizzeriaProject.Models.Pizza>
+
+@{
+    ViewBag.Title = "Pizzas";
+}
+
+<h2>Menu</h2>
+
+<p>
+    @Html.ActionLink("Create New Pizza", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchedPizzaName")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var pizza in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => pizza.Name)
+        </td>
+        <td>
+            @{ @String.Join(", ", pizza.Ingredients.Select(x => x.Name))}
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id= pizza.Id }) |
+            @Html.ActionLink("Details", "Details", new { id= pizza.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id= pizza.Id })
+        </td>
+    </tr>
+}
+
+</table>

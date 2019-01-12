@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PizzeriaProject.Models.Ingredient>
+
+@{
+    ViewBag.Title = "Ingredients";
+}
+
+<h2>Ingredients</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Info))
+{
+    @Html.Raw(ViewBag.Info)
+}
+
+
+<p>
+    @Html.ActionLink("Create New Ingredient", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
